@@ -22,3 +22,10 @@ binary-linux-amd64: dist-dir
 .PHONY: binary-windows-amd64
 binary-windows-amd64: dist-dir
 	GOOS=windows GOARCH=amd64 go build -o dist/"${packager_name}"-windows-amd64.exe ./main.go
+
+.PHONY: binary-all
+binary-all: binary-darwin-amd64 binary-darwin-arm64 binary-linux-amd64 binary-windows-amd64
+
+.PHONY: release
+release: binary-all
+	./script/release.sh

@@ -15,7 +15,7 @@ var (
 		Use:     "bdix-tester",
 		Short:   "CLI for finding compatible servers",
 		Long:    "A small CLI for compatible BDIX servers from a predefined list of servers",
-		Version: "v0.1",
+		Version: "v0.1.0",
 		Run: func(_ *cobra.Command, _ []string) {
 			internal.GetAccessibleServers(threads, timeout)
 		},

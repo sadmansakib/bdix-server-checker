@@ -1,7 +1,9 @@
 package main
 
-import "github.com/sadmansakib/bdix_servers/internal"
+import (
+	"github.com/sadmansakib/bdix_servers/cmd"
+)
 
 func main() {
-	internal.GetAccessibleServers(2)
+	cmd.Execute()
 }

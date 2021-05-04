@@ -24,14 +24,14 @@ type result struct {
 
 var dataList = strings.Split(string(dataByte), "\n")
 
-func GetAccessibleServers(workers int) {
+func GetAccessibleServers(workers uint8, timeout uint8) {
 	var wg sync.WaitGroup
 
 	urlChan := make(chan string, workers)
 	resultChan := make(chan result, workers)
 
 	client := http.Client{
-		Timeout: time.Duration(60 * time.Second),
+		Timeout: time.Duration(time.Duration(timeout) * time.Second),
 	}
 
 	wg.Add(len(dataList))
@@ -62,7 +62,7 @@ func GetAccessibleServers(workers int) {
 
 	defer bar.Finish()
 
-	for i := 0; i < workers; i++ {
+	for i := uint8(0); i < workers; i++ {
 		go func() {
 			for url := range urlChan {
 				networkRequest(url, resultChan, client)

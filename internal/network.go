@@ -78,11 +78,6 @@ func GetAccessibleServers(workers uint8, timeout uint8) {
 
 	wg.Wait()
 
-	err := os.Rename("bdix.tmp", "bdix.txt")
-	if err != nil {
-		log.Fatalln("unable to rename generated file: ", err.Error())
-	}
-
 	fmt.Println("Finished generating server list")
 }
 
@@ -101,12 +96,14 @@ func generateList(ch chan result) {
 	var mutex = &sync.Mutex{}
 	mutex.Lock()
 
-	f, err := os.Create("bdix.tmp")
+	f, err := os.Create("bdix.txt")
 	if err != nil {
 		log.Fatalln("unable to create file: ", err.Error())
 	}
 
 	defer f.Close()
+
+	defer close(ch)
 
 	for res := range ch {
 		_, err := f.WriteString(res.URL + "\n")

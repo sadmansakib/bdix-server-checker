@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 
 	"github.com/sadmansakib/bdix_servers/internal"
@@ -17,10 +18,26 @@ var (
 		Long:    "A small CLI for compatible BDIX servers from a predefined list of servers",
 		Version: "v0.1.0",
 		Run: func(_ *cobra.Command, _ []string) {
-			internal.GetAccessibleServers(threads, timeout)
+			if IsOnline() {
+				internal.GetAccessibleServers(threads, timeout)
+			} else {
+				fmt.Println("unable to connect to the internet")
+				os.Exit(1)
+			}
 		},
 	}
 )
+
+func IsOnline() bool {
+	_, err := http.Get("https://icanhazip.com/")
+	//err = nil means online
+	if err == nil {
+		return true
+	}
+	//if the "return statement" in the if didn't executed,
+	//this one will execute surely
+	return false
+}
 
 func Execute() {
 	if err := cmd.Execute(); err != nil {

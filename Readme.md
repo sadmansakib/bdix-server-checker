@@ -36,7 +36,7 @@ Download `bdix-tester-darwin-amd64.zip` or `bdix-tester-darwin-arm64.zip` **(for
 Download `bdix-tester-windows-amd64.zip` and extract the zip. Move the extracted `bdix-tester-windows-amd64.exe` to Desktop. Then open the cmd then run:
 
 ```sh
-  cd Desktop && bdix-tester-windows-amd64.exe
+  cd Desktop && .\bdix-tester-windows-amd64.exe
 ```
 
 ## Additional Configuration (Optional):

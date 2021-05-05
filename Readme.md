@@ -12,17 +12,40 @@ You can find the binaries [here](https://github.com/sadmansakib/bdix-server-chec
 
 ## Usage
 
-You can run the tool as it is but you can also add optional parameters:
+### **Linux:**
+
+Download `bdix-tester-linux-amd64.zip` and extract the zip. Open terminal inside the extracted folder and run: 
 
 ```sh
-Usage:
-  bdix-tester [flags]
+  chmod +x bdix-tester-linux-amd64 && ./bdix-tester-linux-amd64
+```
 
-Flags:
-  -h, --help            help for bdix-tester
-  -t, --timeout uint8   Define network timeout (in seconds) if network response is unresponsive (default 30)
-  -v, --version         version for bdix-tester
-  -w, --workers uint8   Define number of threads you want to assign to the program (default 2)
+### **MAC OSX:**
+Download `bdix-tester-darwin-amd64.zip` or `bdix-tester-darwin-arm64.zip` **(for M1 users)** and extract the zip. Open terminal inside the extracted folder and run: 
+
+```sh
+  chmod +x bdix-tester-linux-amd64 && ./bdix-tester-linux-amd64
+```
+#### **For M1 users:**
+
+```sh
+  chmod +x bdix-tester-linux-arm64 && ./bdix-tester-linux-arm64
+```
+
+### **Windows:**
+Download `bdix-tester-windows-amd64.zip` and extract the zip. Move the extracted `bdix-tester-windows-amd64.exe` to Desktop. Then open the cmd then run:
+
+```sh
+  cd Desktop && bdix-tester-windows-amd64.exe
+```
+
+## Additional Configuration (Optional):
+You can pass additional configuration flags to the CLI. Currently supported flags are:
+
+```sh
+-t, --timeout uint8   Define network timeout (in seconds) (default 30)
+-v, --version         version for bdix-tester
+-w, --workers uint8   Define number of threads you want to assign to the program (default 2)
 ```
 
 ## Contribution
